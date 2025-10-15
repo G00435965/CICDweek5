@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
 public class PassengerService {
-    private final List<Passenger> store = new Arraylist<>();
+    private final List<Passenger> store = new ArrayList<>();
 
     public List<Passenger> findAll() {
         return new ArrayList<>(store); //defensive copy

@@ -3,6 +3,7 @@ package ie.atu.cicdweek5.controller;
 
 import ie.atu.cicdweek5.model.Passenger;
 import ie.atu.cicdweek5.service.PassengerService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +17,11 @@ public class PassengerController {
 
     private final PassengerService service; //constructor DI
 
-    public PassengerController(PassengerService service){ this.service = service; }
+    public PassengerController(PassengerService service){
+        this.service = service; }
 
     @GetMapping
-    public ResponseEntity<List<Passenger>> getAll(){ return ResponseEntity.ok(service.findAll()) }
+    public ResponseEntity<List<Passenger>> getAll(){ return ResponseEntity.ok(service.findAll()); }
 
     @GetMapping("/{id}")
     public ResponseEntity<Passenger> getOne(@PathVariable String id){
@@ -31,11 +33,11 @@ public class PassengerController {
         } }
 
     @PostMapping
-    public ResponseEntity<Passenger> create(@RequestBody Passenger p){
+    public ResponseEntity<Passenger> create(@Valid @RequestBody Passenger p){
         Passenger created = service.create(p);
-        return ResponseEnitity
+        return ResponseEntity
                 .created(URI.create("api/passengers/" + created.getPassengerId()))
-                .body(created)
+                .body(created);
     }
 
 }
