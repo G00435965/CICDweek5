@@ -1,16 +1,20 @@
 package ie.atu.cicdweek5.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.validation.contraints.Email;
+
 
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Passenger {
-    @NotBlank @Size(max = 40)
+    @NotBlank
+    @Size(max = 40)
     private String passengerId;
 
     @NotBlank @Size(max = 60)
